@@ -1,0 +1,63 @@
+Select sname, staffid, deptno, jobtitle
+	from staff
+		where sname = 'james';
+
+update staff
+	set jobtitle = 'Sales'
+	where staffid = 6094;
+
+update staff
+	set hiredate = '2009-12-10',
+		mthsalary = mthsalary* 1.05
+	where staffid = 9010;
+
+select sum(qty)
+	from items;	
+
+select sum(qty) as 'Total Products Sold so Far'
+		from items;
+
+select DName, dslocation
+	from DEPARTMENTS
+	where dslocation = 'NY'
+	or dslocation = 'TX';
+
+select cname, ccreditlimit, cstate
+	from customers
+	where cstate in( 'AZ' , 'ca')
+	and ccreditlimit> 6000
+order by ccreditlimit desc;	
+		
+select cname, cstate, ccreditlimit
+	from customers
+	where cstate in( 'AZ' , 'ca')
+	and ccreditlimit> 6000
+order by 3 desc;	
+		
+select *
+	from staff
+	where sname = 'smith';
+
+select * 
+	from DEPARTMENTS;
+
+delete from staff
+	where staffid = 7869;
+
+drop table employee;
+drop table JOB;
+
+when database uses a join, it creates a Catesian Product. (Taking everything from one table and adds it to the other table)
+select sname, DCLocation, departments.deptno 
+	from staff, departments;
+
+select sname, DCLocation, departments.deptno 
+	from staff, departments
+	where departments.deptno = staff.deptno
+	order by sname;
+
+select sname, DCLocation, d.deptno
+	from staff s, departments d
+	where d.deptno = s.deptno
+	order by sname;
+(Shorten by alias)

@@ -1,0 +1,50 @@
+CHAPTER 10 VIEws
+
+Ex) Create View Dallas as
+	Select *
+		From Departments
+		where location = 'Dallas';
+
+INSERT DATA)
+
+Insert into Dallas
+	Values ('66,'Horror', 'London');
+Select * from Dallas;
+Select * from Departments;
+--wasnt going to show in view because city was London not Dallas
+
+Insert into Dallas
+	Values ('99,'Experimental', 'Dallas');
+Select * from Dallas;
+Select * from Departments;
+
+DELETING DATA)
+Delete from departments
+	where deptno = '99';
+select * from dallas
+select * from departments
+--will also delete from view
+
+Delete from Dallas
+	where deptno = '99';
+select * from dallas
+select * from departments
+
+Staff members in East, need names, deptno, states, alphabetical
+select sname, s.deptno, dslocation 'State'
+	from staff s, departments d
+		where s.deptno = d.deptno
+			and dslocation in ('NY', 'fl', 'va', 'ri', 'ct', 'MA')
+order by 3;
+
+Create View--
+Create View StaffBackEast as
+	select sname, s.deptno, dslocation 'State'
+		from staff s, departments d
+			where s.deptno = d.deptno
+				and dslocation in ('NY', 'fl', 'va', 'ri', 'ct', 'MA');
+
+
+Select sname, State
+	from StaffBackEast
+order by 2;

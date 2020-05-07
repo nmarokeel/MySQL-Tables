@@ -1,0 +1,77 @@
+Nesting SQL
+
+(Fully Nested) HR needs a list of customers who are in the same state as Smile Bright.  List the customer’s name  and state captioned “Same State as Smile Bright”.
+select cname, cstate 'Same State as Smile Bright'
+	from customers 
+		where cstate =
+		(select cstate	
+			from customers
+			where cname = 'Smile Bright');
+
+(Join) HR needs a list of customers who are in the same state as Smile Bright.  List the customer’s name  and state captioned “Same State as Smile Bright”.
+select c.cname Customers, c.cstate 'Same as Smile Bright'
+	from customers c , customers s
+		where c.cstate = s.cstate	
+			and s.cname = 'Smile Bright'
+			and c.cname <> 'Smile Bright';
+
+(Fully Nested) HR needs a list of employees who have a monthly salary larger than the average salary for the company.  List the employee’s name and monthly salary captioned “Higher Than the Average Monthly Salary”.
+
+select sname, mthSalary 'Higher Than the Average Monthyly Salary'
+	from staff	
+		where mthSalary >
+		(select avg(mthsalary)
+			from staff);
+
+(Fully Nested) Who works in the same department as Miller?  Include their name and department number.  Don’t include Miller’s info. 
+select sname, deptno 'Miller''s Department'
+	from staff	
+		where sname <> 'miller'
+			and deptno = 
+			(select deptno	
+				from staff
+				where sname= 'Miller');
+
+(Fully Nested) On which orders did product number 100860 appear. We need to know when those orders were shipped; there’s a problem with them. Show the most recent order and it’s ship date first
+select ordid, shipdate 'Shipdates for 100860'
+	from orders
+		where ordid in
+		(select ordid
+			from items
+				where prodid = 100860)
+order by shipdate desc;
+
+(Join) Find the salesperson's name (Salespeson) who represents Everything Hockey
+select sname 'Salesperson for Everything Hockey'
+	from staff s, salesstaff ss, customers c
+		where staffid = salesid
+		and salesid = repid
+		and cname = 'Everything Hockey';
+(Fully Nested) Find the salesperson's name (Salespeson) who represents Everything Hockey
+select sname 'Salesperson for Everything Hockey'
+	from staff
+		where staffid in
+			(select salesId
+				from salesstaff
+					where salesid in
+						(select repID
+							from customers
+								where cname = 'Everything Hockey'));
+
+
+(Join) Find the salesperson’s name (Salesperson) and their commission (% Commission) that the salesperson earned representing Everything Hockey
+
+select sname Salesperson, comm '% Commission for Everything Hockey'
+	from staff s, salesstaff ss, customers c
+		where staffid = salesid	
+			and salesid = repid
+				and sname = 'Everything Hockey';
+ 
+(Full Nested)Find the salesperson’s name (Salesperson) and their commission (% Commission) that the salesperson earned representing Everything Hockey
+select sname Salesperson, comm '% Commission for Everything Hockey'
+	from staff s, salesstaff ss
+		where staffid= salesid
+			and salesid in
+			(select repId	
+				from customers
+				where Cname = 'Everything Hockey');

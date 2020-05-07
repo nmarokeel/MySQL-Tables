@@ -1,0 +1,75 @@
+"if you dont have time to correctly complete it the first time, when will you ever find time to do it over?" -Dr. Moser's Dad
+
+GROUP BY
+Select column-list
+	From table-list
+	[Where condition-list]
+		[Group By column-list
+		Order by column-list [ASC | Desc]];
+
+WHEN EACH IS PRESENT- BIG HINT TO GROUP DATA
+
+ex) highest GPA from school of business
+	Select max(gpa)
+		from Student
+ex) GPA from each major from college of business
+	Select 
+
+What is the average monthly salary for each department? List highest monthly salary first
+	
+	Select DeptNo, AVg(monthsalary) As 'Average Salary per 		Department'
+		From Staff
+		Group By DeptNo.
+		Order by 2 Desc;
+
+How many departments are in each state? List alphabetically by state
+
+	Select DSLocation, count(Distinct DeptNo) as ' Departments 	by State'
+		From Departments
+		Group BY DSLocation
+		Order BY 1;
+
+Having Clause
+        SELECT column-list
+          FROM table-list
+            [WHERE condition-list]
+               [GROUP BY column-list
+                 HAVING condition-list
+          [ORDER BY column-list [ASC | DESC] ] ;
+
+What is the total quantity of products for each order?  Include the order number, and label the total quantity “Total Quantities per Order”.  Include the tuple only if the total quantity is more than 500.  List the result from highest to lowest quantities.
+
+-First find out what is in the ITEMS table
+	Select*
+	from items
+	ordr by orderid;
+-Next find the total quantities on each order and check your results
+	Select ordid, sum(qty) 'Total Quantities per Oder'
+		From items
+		Group by ordid
+		order by 2 desc;
+-Next grab quantities required
+	Select ordid, sum(qty) 'Total'
+	From items
+	group by ordid
+	having sum(qty)>500
+	order by 2 desc;
+
+What is the total revenue for each order?  Include the order number, and label the total “Total Revenue per Order”.  Include the tuple only if the total revenue is less than $100.  List the result from highest to lowest revenue.
+
+-First find out what was purchased on each order
+	Select *
+	from items i, products p
+	where i.prodid= p.prodid
+	order by ordid
+-Next find the total revenue of each order
+	Select ordid, sum(qty* price) 'Total'
+	From items i, products p,
+	where i,prodid = p.prodid
+	group by ordid
+Next grab those values required
+	Select ordid, sum(qty* price) 'Total'
+	From items i, products p,
+	where i,prodid = p.prodid
+	having sum(qty*price) <100orde
+	group by ordid

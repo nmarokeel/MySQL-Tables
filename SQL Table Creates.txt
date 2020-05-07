@@ -1,0 +1,183 @@
+/* Customer Table */
+create table Customers (
+CustomerID			varchar(12)			NOT NULL,
+CustomerFName			char(30)			Not NULL,
+CustomerLName			char(30)			Not NUll,
+street				varchar(30)			Not null,
+city				char(30)			not null,
+zip				varchar(5)			not null,
+phone				varchar(10)			not null,
+creditCard			varchar(16)			not null
+Primary Key (Customerid));
+
+insert into customers values ('000000000012', 'Jenny', 'Lopez', '4th St', 'Bronx', '85231', '7803345678', '2323434356567878');
+insert into customers values ('000000000001', 'Donald', 'Gonzalez', 'Coffe Cir', 'Denver', '60016', '9087653490', '4345619876520911');
+insert into customers values ('014682349012', 'Henry', 'Reynolds', 'Marvel Way', 'Dakota', 98023, 6234876543, 4342568734561298);
+insert into customers values ('014682349012', 'Mark', 'Fanning', 'Phone Dr', 'Little Rock', 87653, 2245348765, 4344987324987123);
+insert into customers values ('014682349012', 'Anthony', 'Rizzo', 'Cubs Dr', 'Skokie', 60012, 9836547812, 1239048571024587);
+insert into customers values ('014682349034', 'Chris', 'Byrant', 'Cubs Dr', 'Skokie', 60012, 8765439999, 1098234567890142);
+insert into customers values ('014682349120', 'Joe', 'Madden', '4th st', 'Bronx', 85231, 7653419873, 4342561987650912);
+insert into customers values ('014682348911', 'Javy', 'Baez', 'Coffe Cir', 'Denver', 60016, 9089089081, 9081908113237861);
+insert into customers values ('014685999012', 'Willson', 'Contreras', 'Bear St', 'Potter', 73425, 9991117651, 0909989876765454);
+insert into customers values ('013412349012', 'Addison', 'Russel', 'Bear St', 'Potter', 73425, 2247718989, 2242247891021234);
+insert into customers values ('014682341114', 'Matt', 'King', 'Tree Ave', 'Danville', 60178, 9990001111, 1818191920202121);
+insert into customers values ('014682341120', 'Jacob', 'Henry', '4th st', 'Bronx', 85231, 8882221278, 4342561987879999);
+insert into customers values ('014680900911', 'Michael', 'Baez', 'Coffe Cir', 'Denver', 60016, 9091212132, 9012389401928491);
+insert into customers values ('014685911111', 'Trent', 'Connor', 'Bear St', 'Potter', 73425, 1238937891, 1234890190122849);
+insert into customers values ('013412444443', 'Addison', 'Jacobs', 'Triangle Cir', 'Music', 12389, 8928232899, 2242247891024321);
+insert into customers values ('838222658433', 'Louis', 'Grayson', '121 Weber Dr', 'Hampton', 90988, 6236177777, 1223999978461276);
+insert into Customers values ('123456789657', 'Jason', 'Gardner', '4455 N. Halcon Way', 'Scottsdale', '85255', '4561123492', '2345678761234563')
+insert into Customers values ('457832453652', 'Ronaldo', 'Terry', '2314 S. Well Blvd', 'New York', '41352', '4352132356', '7889034567123765')
+insert into Customers values ('758493028394', 'Drew', 'Grayson', '8945 N. Mile High', 'Dabston', '22222', '9085847846', '7489374657483928')
+insert into Customers values ('784748594038', 'Miles', 'Moralas', '132 W. Anderson St.', 'Rainstrum', '43234', '9384903948', '2348940734728146')
+insert into Customers values ('584930273849', 'Bruce', 'Wayne', '2233 N. Pelican Ave', 'Gotham','66665', '4657839284', '2389475874657486')
+insert into Customers values ('000000000014', 'Mike', 'Monster', '145 Spook Dr.', 'Greystar', '34784', '1375498573', '1378596849586732')
+INSERT INTO Customers VALUES ('000000000013', 'Cardi', 'Beatrice', 'Tree Ave', 'Danville', '60178', '8284742675', '3525385725164836');
+INSERT INTO Customers VALUES ('000000000023', 'Stacey', 'Leeville', 'Denver St.', 'Tampay', '60303', '7473368908', '7777444489087766');
+INSERT INTO Customers VALUES ('777777777778', 'Louis', 'Diaz', 'Hamilton Blvd', 'Hampton', '90988', '6253387564', '6574333322228907');
+INSERT INTO Customers VALUES ('999999922', 'Carol', 'Patrick', 'Archie Ave.', 'Hampton', '90988', '6254447777', '8883337747632123');
+INSERT INTO Customers VALUES ('999222863211', 'Carmen', 'Mylow', 'River Dale Dr.', 'Madison', '55403', '6392875643', '7362538475643231');
+INSERT INTO Customers VALUES ('127463512344', 'Karmen', 'Amster', 'Drive Dr.', 'Moon', '88372', '7774443627', '3826736251432345');
+INSERT INTO Customers VALUES ('623777446321', 'Carrie', 'Fisher', 'Millennium Dr,', 'Space', '00000', '3332221111', '7746351234223456');
+INSERT INTO Customers VALUES ('252333478699', 'Carington', 'Collegient', 'Mountain Ave', 'Rock', '77733', '7773334623', '9937264854212222');
+
+
+/* Pet Table */
+create table PETS (
+PetID				varchar(6) 			Not Null,
+PetName 			char(15) 			not Null,
+Species 			varchar(15) 			not null,
+weight 				varchar(3) 			not null,
+DOB 				varchar(6) 			not null,
+Gender 				char(1) 			not null,
+NeuteredSpayed 			char(1) 			not null,
+Vaccinated 			bit 				not null,
+CustomerID 			varchar(12) 			not null,
+ColorID 			char(15) 			not null,
+Primary Key (PetID),
+Foreign Key (CustomerID) References Customers (CustomerID));
+
+insert into PETS values (123456, 'Ty', 'Poodle', 65,072010 , 'M', 'Y', 0 , 784748594038, 'White')
+insert into PETS values (041940, 'Joker', 'Rottweiler', 89, 122005, 'F', 'Y',1, 584930273849,'Abyss Black')
+insert into PETS values (041921, 'Good Boy', 'Corgi', 30, 102010, 'M', 'N',0, 838222658433, 'Toast Brown')
+insert into PETS values (071509, 'Nico', 'German Shepherd', 115, 082000, 'M', 'Y','1', 623777446321, 'Black and Brown')
+insert into PETS values (181818, 'Courage', 'Pit Bull', 96, 112012, 'F', 'N',0, 123456789657, 'Pretty Pink')
+
+
+/*Create Colors Table */
+create table COLORS (
+PetID 				varchar(6) 			not null,
+Color 				varchar(15) 			not null,
+Primary key (PetID, Color)); 
+
+insert into colors values( 1234, 'Brown')
+insert into colors values (123456, 'White')
+insert into colors values (181818, 'Pink')
+insert into colors values( 41921, 'Brown')
+insert into colors values (41940, 'Black')
+insert into colors values (71509, 'Black')ins
+
+/* create ResDetails Table */ 
+create table Resdetails (
+Res# 				varchar(8) 			not null,
+PetID 				varchar(6) 			not null,
+BoardingRate 			float(53) 			not null,
+Timein 				time 				not null,
+TimeOut 			time 				not null,
+MedicinePrice 			decimal(4,2) 			not null,
+BathingPrice 			varchar(2) 			not null,
+Primary Key (Res#),
+Foreign Key (PetID) references PETS (PetId));
+
+insert into Resdetails values (45867901, 123456, 10, '06:27', '14:30', 0,45)
+insert into resdetails values (12383401, 181818, 21, '08:14', '17:29', 0, 45)
+insert into Resdetails values (12345623, 41921, 21, '08:01', '15:10', 0,0)
+insert into resdetails values (12345612, 181818, 21, '08:15', '16:20', 85, 0)
+insert into Resdetails values (12345128, 41921, 10, '05:25', '18:30', 0,45)
+insert into resdetails values (12345121, 41940, 10, '08:00', '14:10', 25, 0) 
+insert into Resdetails values (12342149, 71509, 0, '14:15', '17:30', 0,0)
+insert into resdetails values (12213011, 1234, 21, '07:21', '17:30', 0, 45)
+insert into Resdetails values (12345672, 123456, 21, '06:45', '13:30', 0,45)
+insert into resdetails values (12341231, 41921, 21, '07:45', '14:30', 0, 45)
+insert into resdetails values (12345670, 1234, 21, '08:15', '05:30', 0 0)
+inster into resdetails values (12345678, 1234, 21, '08:15', '05:30' 0,0)
+
+/*Create Table Reservations */
+create table Reservations (
+Res# 				varchar(8) 			not null,
+DateVisit 			date 				not null,
+StaffID 			varchar(7) 			not null,
+Primary Key (Res#),
+Foreign Key (StaffID) references STaff (StaffID));
+
+/* Staff ID */ 
+create Table Staff ( 
+StaffID                		varchar(7)            		NOT NULL,
+StaffFName                	char(15)            		NOT NULL,
+StaffLName                	char(15)            		NOT NULL,
+StaffStreet                	varchar(30)            		NOT NULL,
+StaffCity               	varchar(30)            		NOT NULL,
+StaffZip               	 	varchar(5)            		NOT NULL,
+PayRate                		varchar(4)            		NOT NULL, 
+StartDate                	char(8)            		NOT NULL,
+[DaysAbsent]           	 	varchar(3)            		NOT NULL,
+StaffTitle                	char(30)            		NOT NULL, 
+Primary Key(StaffID)); 
+
+
+/* create table Days Worked */
+Create table DAYSWORKED (
+StaffId 			varchar(7) 			not null,
+date 				date 				not null,
+primary key(Staffid, date));
+
+/*Create Table Days Absent*/
+Create table DaysAbsent (
+StaffID 			varchar(7) 			not null,
+date 				date 				not null,
+Primary Key (staffid,date));
+
+
+/* Paycheck Table */ 
+
+create table Paycheck(
+PaycheckID                  	varchar(7)        		NOT NULL,
+StaffID                     	varchar(7)        		NOT NULL,
+SSN                          	varchar(9)        		NOT NULL,
+CompanyName                  	char(30)            		NOT NULL,
+DateIssued                  	date,
+BankName                  	varchar(30)        		NOT NULL, 
+AccountNumber              	varchar(12)       	 	NOT NULL, 
+FederalTaxDeduction          	decimal(2,2)        		NOT NULL, 
+StateTaxDeduction          	decimal(2,2)        		NOT NULL,
+Primary Key (PaycheckID),
+FOREIGN Key (StaffID) REFERENCES Staff(StaffID));
+
+/* PartTime Table */ 
+create table PartTime (
+StaffID                		varchar(7)        		NOT NULL,
+PRefName            		char(40)        		NOT NULL,
+PRefNumber            		varchar(10)        		NOT NULL,
+EmergencyName        		varchar(30)        		NOT NULL,
+EmergencyNumber        		varchar(10)        		NOT NULL,
+Primary Key (StaffID));
+
+/*Create table Full Time */
+Create table FULLTIME (
+StaffID 			varchar(7) 			not null,
+Medical 			varchar(4) 			not null,
+Dental 				varchar(4) 			not null,
+Disability 			varchar(4) 			not null,
+LifeInsurance 			varchar(4) 			not null,
+type 				varchar(10) 			not null,
+Primary key (staffid));
+
+/* RecordKeeper */ 
+create table RecordKeeper(
+StaffID                		varchar(7)        		NOT NULL,
+SRefName            		char(40)            		NOT NULL,
+SRefNumber            		varchar(10)        		NOT NULL,
+Degree                		varchar(30)        		NOT NULL,
+GradDate            		date,            
+YrsofExperience        		varchar(2)        		NOT NULL,
+PRIMARY KEY (StaffID)); 

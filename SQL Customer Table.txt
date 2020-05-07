@@ -1,0 +1,124 @@
+/* Customer Table */
+create table Customers (
+CustomerID			varchar(12)			NOT NULL,
+CustomerFName			char(30)			Not NULL,
+CustomerLName			char(30)			Not NUll,
+street				varchar(30)			Not null,
+city				char(30)			not null,
+zip				varchar(5)			not null,
+phone				varchar(10)			not null,
+creditCard			varchar(16)			not null
+Primary Key (Customerid));
+
+/* Pet Table */
+create table PETS (
+PetID				varchar(6) 			Not Null,
+PetName 			char(15) 			not Null,
+Species 			varchar(15) 			not null,
+weight 				varchar(3) 			not null,
+DOB 				varchar(6) 			not null,
+Gender 				char(1) 			not null,
+NeuteredSpayed 			char(1) 			not null,
+Vaccinated 			bit 				not null,
+CustomerID 			varchar(12) 			not null,
+ColorID 			char(15) 			not null,
+Primary Key (PetID),
+Foreign Key (CustomerID) References Customers (CustomerID));
+
+/*Create Colors Table */
+create table COLORS (
+PetID 				varchar(6) 			not null,
+Color 				varchar(15) 			not null,
+Primary key (PetID, Color)); 
+
+/* create ResDetails Table */ 
+create table Resdetails (
+Res# 				varchar(8) 			not null,
+PetID 				varchar(6) 			not null,
+BoardingRate 			float(53) 			not null,
+Timein 				time 				not null,
+TimeOut 			time 				not null,
+MedicinePrice 			decimal(4,2) 			not null,
+BathingPrice 			varchar(2) 			not null,
+Primary Key (Res#),
+Foreign Key (PetID) references PETS (PetId));
+
+/*Create Table Reservations */
+create table Reservations (
+Res# 				varchar(8) 			not null,
+DateVisit 			date 				not null,
+StaffID 			varchar(7) 			not null,
+Primary Key (Res#),
+Foreign Key (StaffID) references STaff (StaffID));
+
+/* Staff ID */ 
+create Table Staff ( 
+StaffID                		varchar(7)            		NOT NULL,
+StaffFName                	char(15)            		NOT NULL,
+StaffLName                	char(15)            		NOT NULL,
+StaffStreet                	varchar(30)            		NOT NULL,
+StaffCity               	varchar(30)            		NOT NULL,
+StaffZip               	 	varchar(5)            		NOT NULL,
+PayRate                		varchar(4)            		NOT NULL, 
+StartDate                	char(8)            		NOT NULL,
+[DaysAbsent]           	 	varchar(3)            		NOT NULL,
+StaffTitle                	char(30)            		NOT NULL, 
+Primary Key(StaffID)); 
+
+
+/* create table Days Worked */
+Create table DAYSWORKED (
+StaffId 			varchar(7) 			not null,
+date 				date 				not null,
+primary key(Staffid, date));
+
+/*Create Table Days Absent*/
+Create table DaysAbsent (
+StaffID 			varchar(7) 			not null,
+date 				date 				not null,
+Primary Key (staffid,date));
+
+
+/* Paycheck Table */ 
+
+create table Paycheck(
+PaycheckID                  	varchar(7)        		NOT NULL,
+StaffID                     	varchar(7)        		NOT NULL,
+SSN                          	varchar(9)        		NOT NULL,
+CompanyName                  	char(30)            		NOT NULL,
+DateIssued                  	date,
+BankName                  	varchar(30)        		NOT NULL, 
+AccountNumber              	varchar(12)       	 	NOT NULL, 
+FederalTaxDeduction          	decimal(2,2)        		NOT NULL, 
+StateTaxDeduction          	decimal(2,2)        		NOT NULL,
+Primary Key (PaycheckID),
+FOREIGN Key (StaffID) REFERENCES Staff(StaffID));
+
+/* PartTime Table */ 
+create table PartTime (
+StaffID                		varchar(7)        		NOT NULL,
+PRefName            		char(40)        		NOT NULL,
+PRefNumber            		varchar(10)        		NOT NULL,
+EmergencyName        		varchar(30)        		NOT NULL,
+EmergencyNumber        		varchar(10)        		NOT NULL,
+Primary Key (StaffID));
+
+/*Create table Full Time */
+Create table FULLTIME (
+StaffID 			varchar(7) 			not null,
+Medical 			varchar(4) 			not null,
+Dental 				varchar(4) 			not null,
+Disability 			varchar(4) 			not null,
+LifeInsurance 			varchar(4) 			not null,
+type 				varchar(10) 			not null,
+Primary key (staffid));
+
+/* RecordKeeper */ 
+create table RecordKeeper(
+StaffID                		varchar(7)        		NOT NULL,
+SRefName            		char(40)            		NOT NULL,
+SRefNumber            		varchar(10)        		NOT NULL,
+Degree                		varchar(30)        		NOT NULL,
+GradDate            		date,            
+YrsofExperience        		varchar(2)        		NOT NULL,
+PRIMARY KEY (StaffID)); 
